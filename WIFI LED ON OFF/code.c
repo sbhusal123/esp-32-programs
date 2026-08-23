@@ -2,28 +2,38 @@
 #include <WebServer.h>
 
 // 1. Enter your Wi-Fi credentials here!
-const char* ssid = "<ssid>";
-const char* password = "<password>";
+const char* ssid = "";
+const char* password = "";
 
 // 2. Define the LED Pin
-const int LED_PIN = 2; 
+const int LED_PIN = 23; 
 
 // 3. Create a web server object on port 80 (standard HTTP port)
 WebServer server(80);
 
 // --- Functions to handle web requests ---
-
-// What happens when someone visits the main page ("/")
 void handleRoot() {
+  // Read the current physical state of the pin
+  bool isLedOn = digitalRead(LED_PIN);
+  
+  // Set text and color based on the state
+  String statusText = isLedOn ? "ON" : "OFF";
+  String statusColor = isLedOn ? "#4CAF50" : "#f44336"; // Green if ON, Red if OFF
+
   String html = "<!DOCTYPE html><html>";
   html += "<head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">";
   html += "<style>body { font-family: Arial; text-align: center; margin-top: 50px; } ";
   html += "a { display: inline-block; padding: 15px 30px; margin: 10px; text-decoration: none; font-size: 20px; color: white; border-radius: 5px; } ";
   html += ".btn-on { background-color: #4CAF50; } "; // Green
   html += ".btn-off { background-color: #f44336; } "; // Red
+  html += ".status { font-size: 24px; font-weight: bold; color: " + statusColor + "; }";
   html += "</style></head><body>";
   
   html += "<h1>ESP32 LED Control</h1>";
+  
+  // Display the current status
+  html += "<p>Current Status: <span class=\"status\">" + statusText + "</span></p>";
+  
   html += "<a href=\"/led/on\" class=\"btn-on\">Turn ON</a>";
   html += "<a href=\"/led/off\" class=\"btn-off\">Turn OFF</a>";
   
