@@ -5,4 +5,10 @@ When you connect to it using a browser on your phone or computer, it serves up a
 
 - Pin `23` i.e. `D23` is set HIGH / LOW using a web interface.
 
+## Web Interface UI
+
 ![Web Interface](./images/web_interface.png)
+
+## Expose to ngrok globally
+
+- To forward port to ngrok: `ngrok http <ESP32_IP>:80`
