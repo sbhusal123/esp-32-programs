@@ -5,6 +5,8 @@ When you connect to it using a browser on your phone or computer, it serves up a
 
 - Pin `23` i.e. `D23` is set HIGH / LOW using a web interface.
 
+- IP assigned to esp32 on a wlan is displayed on a serial console.  Baud rate **115200**.
+
 ## Web Interface UI
 
 ![Web Interface](./images/web_interface.png)

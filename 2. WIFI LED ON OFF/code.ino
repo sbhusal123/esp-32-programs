@@ -6,7 +6,7 @@ const char* ssid = "";
 const char* password = "";
 
 // 2. Define the LED Pin
-const int LED_PIN = 23; 
+const int LED_PIN = 2;
 
 // 3. Create a web server object on port 80 (standard HTTP port)
 WebServer server(80);
